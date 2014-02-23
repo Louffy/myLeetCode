@@ -1,0 +1,77 @@
+class ListNode:
+	def __init__(self, x):
+		self.val = x
+		self.next = None
+class Mylist:
+	def gen(self,s):
+		if len(s)==0:
+			return None
+		head=ListNode(s[0])
+		p=head
+		for i in range(1,len(s)):
+			node=ListNode(s[i])
+			p.next=node
+			p=node
+		return head
+	def myprint(self,head):
+		p=head
+		while p != None:
+			print p.val,
+			p=p.next
+		print
+class Solution:
+    # @return a ListNode
+	def addTwoNumbers(self, l1, l2):
+		p=l1
+		q=l2
+		temp=0
+		acc=0
+		head=ListNode(0)
+		n=head
+		while p!=None and q!=None:
+			acc=p.val+q.val+temp
+			if acc/10==1:
+				temp=1
+				acc=acc%10
+			else:
+				temp=0
+			node=ListNode(acc)
+			n.next=node
+			n=node
+			p=p.next
+			q=q.next
+		if p==None:
+			w=q
+		else :
+			w=p
+		while w!=None:
+			acc=w.val+temp
+			if acc/10==1:
+				temp=1
+				acc=0
+			else:
+				temp=0
+			node=ListNode(acc)
+			n.next=node
+			n=node
+			w=w.next
+		if temp==1:
+			node=ListNode(1)
+			n.next=node
+			n=node
+		n.next=None
+		return head.next
+node = ListNode(67)
+node2=ListNode(2)
+node.next=node2
+print node.next.val
+print node.val
+s1=[1,3,5,8]
+s2=[]
+h1=Mylist().gen(s1)
+h2=Mylist().gen(s2)
+Mylist().myprint(h1)
+Mylist().myprint(h2)
+so=Solution()
+h3=so.addTwoNumbers(h1,h2)
+Mylist().myprint(h3)
