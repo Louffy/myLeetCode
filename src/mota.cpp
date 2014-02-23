@@ -60,7 +60,7 @@ public:
 			sa=ma-2
 			ea=ma+2
 		}
-		c=A[sa:ea+1]+B[sb:eb+1]
+		int c=A[sa:ea+1]+B[sb:eb+1]
 		print c
 		c.sort()
 		print c
